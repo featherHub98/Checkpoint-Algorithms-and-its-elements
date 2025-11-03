@@ -7,40 +7,34 @@ VAR
     prev_char : CHARACTER := ' ';
     
 BEGIN
-    // Read first character
+   
     READ(char);
     
-    // Process until point is encountered
     WHILE char != '.' DO
-        // Count all characters
+  
         length_counter := length_counter + 1;
-        
-        // Check for vowels
+       
         IF char IN ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'] THEN
             vowel_counter := vowel_counter + 1;
         END IF;
-        
-        // Count words when space follows non-space
+      
         IF char == ' ' AND prev_char != ' ' THEN
             word_counter := word_counter + 1;
         END IF;
         
-        // Store current character for next iteration
+       
         prev_char := char;
         
-        // Read next character
         READ(char);
     END WHILE;
-    
-    // Add the point to length count
+   
     length_counter := length_counter + 1;
     
-    // Count last word if sentence wasn't empty
+   
     IF prev_char != ' ' AND length_counter > 1 THEN
         word_counter := word_counter + 1;
     END IF;
     
-    // Display results
     Write("Length: " + length_counter);
     Write("Words: " + word_counter);
     Write("Vowels: " + vowel_counter);
